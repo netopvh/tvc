@@ -51,7 +51,7 @@
             @yield('content')
 
             <!-- Footer -->
-                <div class="footer text-muted">
+                <div class="footer text-primary text-bold">
                     @include('layout.backend.partials.footer')
                 </div>
                 <!-- /footer -->

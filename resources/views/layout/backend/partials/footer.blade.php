@@ -1,1 +1,1 @@
-&copy; 2017. <a href="#">e-Gestão CGM</a> Desenvolvido por <a href="http://themeforest.net/user/Kopyov" target="_blank">ODP CGM</a>
+&copy; 2017. TV Porto Velho - Desenvolvido por Angelo Neto
