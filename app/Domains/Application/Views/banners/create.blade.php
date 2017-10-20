@@ -28,50 +28,54 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <form action="{{ route('admin.users.store') }}" class="form-validate-jquery" method="POST">
+                    <form action="{{ route('admin.banners.store') }}" class="form-validate-jquery" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <fieldset>
                             <legend class="text-semibold">Entre com as informações</legend>
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Nome Completo:</label>
-                                        <input name="name" type="text" class="form-control text-uppercase" required>
+                                        <label>Parceiro / Anunciante:</label>
+                                        <select name="parceiro_id" class="select-search" required>
+                                            <option value="">SELECIONE O PARCEIRO</option>
+                                            @foreach($parceiros as $parceiro)
+                                                <option value="{{ $parceiro->id }}">{{ $parceiro->nome }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Login / Matrícula:</label>
-                                        <input name="username" type="text" class="form-control" required>
+                                        <label>Expira em: <span class="text-danger text-size-mini">*Sem data limite deixe em branco</span></label>
+                                        <input name="data_limite" type="text" class="form-control datepicker">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Posição: </label>
+                                        <select name="posicao" class="select" required>
+                                            <option value="T">TOPO</option>
+                                            <option value="B">BOX</option>
+                                            <option value="L">LATERAL</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>E-mail:</label>
-                                        <input name="email" type="email" class="form-control" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Senha:</label>
-                                        <input name="password" id="password" type="password" class="form-control" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Repetir Senha:</label>
-                                        <input name="repeat_password" type="password" class="form-control" required>
+                                        <label class="display-block">Arquivo do Banner: <span class="text-danger text-size-mini">*Somente .jpg|.png|.gif</span></label>
+                                        <input name="imagem" type="file" class="file-styled" required>
                                     </div>
                                 </div>
                             </div>
                         </fieldset>
 
                         <div class="text-right">
-                            <a href="{{ route('admin.users') }}" class="btn btn-info legitRipple"><i class="icon-database-arrow"></i> Retornar</a>
+                            <a href="{{ route('admin.banners') }}" class="btn btn-info legitRipple"><i
+                                        class="icon-database-arrow"></i> Retornar</a>
                             <button type="submit" class="btn btn-primary legitRipple">Salvar Registro <i
                                         class="icon-database-insert position-right"></i></button>
                         </div>

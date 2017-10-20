@@ -21,6 +21,7 @@ class CreateBannersTable extends Migration
             $table->integer('clicks')->default(0);
             $table->string('imagem');
             $table->char('posicao',1);
+            $table->boolean('publicado')->default(false);
             $table->timestamps();
 		});
 	}

@@ -11,11 +11,24 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'ANGELO MENDONÇA NETO',
-            'username' => '3335',
-            'email' => 'angelo.neto@fiero.org.br',
-            'password' => bcrypt('123456'),
+        $role = \App\Domains\Access\Models\Role::find(1);
+
+        $this->command->info("Criando Usuários");
+        // Create default user for each role
+        $userUm = \App\Domains\Access\Models\User::create([
+            'name' => 'ANGELO NETO',
+            'username' => 'angelo',
+            'email' => 'netopvh@gmail.com',
+            'password' => bcrypt('jans2neto')
         ]);
+        $userUm->attachRole($role);
+
+        $userDois = \App\Domains\Access\Models\User::create([
+            'name' => 'HUMBERTO BANCHIERI',
+            'username' => 'humberto',
+            'email' => 'humberto@gmail.com',
+            'password' => bcrypt('741852')
+        ]);
+        $userDois->attachRole($role);
     }
 }

@@ -34,10 +34,12 @@ mix.js([
 mix.js([
     'resources/assets/backend/js/plugins/forms/styling/switchery.min.js',
     'resources/assets/backend/js/plugins/pickers/datepicker.js',
+    'resources/assets/backend/js/plugins/pickers/datepicker_pt-BR.js',
     'resources/assets/backend/js/plugins/forms/inputs/duallistbox.min.js',
     'resources/assets/backend/js/plugins/notifications/sweet_alert.min.js',
     'resources/assets/backend/js/plugins/notifications/bootbox.min.js',
     'resources/assets/backend/js/plugins/forms/styling/uniform.min.js',
+    'resources/assets/backend/js/plugins/media/fancybox.min.js',
     'resources/assets/backend/js/plugins/ui/moment/moment.js',
     'resources/assets/backend/js/plugins/forms/mask/inputmask/dist/jquery.inputmask.bundle.js'
 ], 'backend/js/theme.js')

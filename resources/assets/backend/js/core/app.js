@@ -638,9 +638,16 @@ $(function() {
         minimumResultsForSearch: Infinity
     });
 
+    $('.select-search').select2();
+
     // Default initialization
     $(".styled, .multiselect-container input").uniform({
         radioClass: 'choice'
+    });
+
+    // Image lightbox
+    $('[data-popup="lightbox"]').fancybox({
+        padding: 3
     });
 
     //
@@ -679,7 +686,9 @@ $(function() {
 
     // Styled file input
     $(".file-styled").uniform({
-        fileButtonClass: 'action btn bg-blue'
+        fileButtonClass: 'action btn bg-blue',
+        fileButtonHtml: 'Selecione o Arquivo',
+        fileDefaultHtml: 'Nenhum arquivo selecionado'
     });
 
     // Switchery toggles
@@ -825,6 +834,10 @@ $(function() {
             },
             switch_group: {
                 minlength: 2
+            },
+            imagem: {
+                required: true,
+                extension: "jpg|png|gif"
             }
         }
     });
@@ -853,6 +866,12 @@ $(function() {
     });
 
     $('.textarea').ckeditor();
+
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        language: 'pt-BR'
+    });
 
     /**
      * Parceiros Module
@@ -932,6 +951,7 @@ $(function() {
                 {data: 'limite', name:'banners.data_limite'},
                 {data: 'imagem', name:'banners.imagem'},
                 {data: 'posicao', name:'banners.posicao',searchable: false},
+                {data: 'publicado', name:'banners.publicado',searchable: false},
                 {data: 'created_at', name:'banners.created_at'},
                 {data: 'action', orderable: false, searchable: false}
             ]

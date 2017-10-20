@@ -38,8 +38,9 @@
                             <th>Prazo Limite</th>
                             <th>Imagem</th>
                             <th>Posicao</th>
+                            <th>Status</th>
                             <th>Data Cadastro</th>
-                            <th width="80" class="text-center">Ações</th>
+                            <th width="40" class="text-center">Ações</th>
                         </tr>
                         </thead>
                     </table>

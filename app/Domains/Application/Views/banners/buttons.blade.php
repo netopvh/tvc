@@ -1,5 +1,16 @@
 <ul class="icons-list">
     <li>
+        @if($banner->publicado)
+            <a href="{{ route('admin.parceiros.edit',['id' => $banner->id]) }}" title="Despublicar">
+                <i class="icon-price-tag3"></i>
+            </a>
+        @else
+            <a href="{{ route('admin.parceiros.edit',['id' => $banner->id]) }}" title="Publicar">
+                <i class="icon-price-tag3"></i>
+            </a>
+        @endif
+    </li>
+    <li>
         <a href="{{ route('admin.parceiros.edit',['id' => $banner->id]) }}">
             <i class="icon-pencil7"></i>
         </a>
