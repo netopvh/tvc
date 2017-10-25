@@ -23,6 +23,7 @@ mix.copy('resources/assets/backend/js/plugins/forms/validation/localization/mess
 mix.copy('resources/assets/backend/js/plugins/ui/nicescroll.min.js','public/backend/js/plugins/nicescroll.min.js');
 mix.copy('resources/assets/backend/js/plugins/tables/datatables/datatables.min.js','public/backend/js/plugins/datatables.min.js');
 mix.copy('resources/assets/backend/js/plugins/tables/datatables/extensions/buttons.min.js','public/backend/js/plugins/buttons.min.js');
+mix.copy('resources/assets/backend/js/plugins/forms/styling/switch.min.js','public/backend/js/plugins/switch.min.js');
 
 mix.js([
     'resources/assets/backend/js/core/app.js',
@@ -32,7 +33,6 @@ mix.js([
     .version();
 
 mix.js([
-    'resources/assets/backend/js/plugins/forms/styling/switchery.min.js',
     'resources/assets/backend/js/plugins/pickers/datepicker.js',
     'resources/assets/backend/js/plugins/pickers/datepicker_pt-BR.js',
     'resources/assets/backend/js/plugins/forms/inputs/duallistbox.min.js',

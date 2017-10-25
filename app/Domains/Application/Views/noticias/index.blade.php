@@ -28,48 +28,20 @@
                                 class="icon-database-add"></i>
                         Cadastrar</a>
                 </div>
-                <div class="panel-body">
-                    <form action="">
-                        <fieldset>
-                            <legend>Pesquisar Notícia</legend>
-                            <div class="row">
-                                <div class="col-md-7">
-                                    <div class="col-lg-10">
-                                        <div class="input-group">
-												<span class="input-group-btn">
-													<button class="btn btn-default btn-icon legitRipple"
-                                                            type="button"><i class="icon-user"></i></button>
-												</span>
-                                            <input type="text" name="search" class="form-control text-uppercase upper"
-                                                   placeholder="Digite o titulo">
-                                            <span class="input-group-btn">
-													<button class="btn btn-default legitRipple"
-                                                            type="submit">Pesquisar</button>
-												</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
                 <div class="table-responsive">
-                    <table class="table table-framed table-bordered table-striped text-size-base"
+                    <table id="tbl_noticias" class="table table-condensed table-framed table-bordered table-striped text-size-base"
                            data-form="deleteForm">
                         <thead>
                         <tr>
-                            <th width="70">#</th>
-                            <th>Nome Completo</th>
-                            <th>Perfil</th>
-                            <th width="120">Status</th>
-                            <th width="80" class="text-center">Ações</th>
+                            <th>#</th>
+                            <th>Titulo</th>
+                            <th>Destaque</th>
+                            <th>Autor</th>
+                            <th>Status</th>
+                            <th>Cadastrado em</th>
+                            <th class="text-center">Ações</th>
                         </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td colspan="5"></td>
-                            </tr>
-                        </tbody>
                     </table>
                 </div>
             </div>

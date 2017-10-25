@@ -12,17 +12,18 @@ class BannerValidator extends LaravelValidator
         ValidatorInterface::RULE_CREATE => [
             'parceiro_id' => 'required',
             'posicao' => 'required',
-            'imagem' => 'required'
+            'imagem' => 'required',
         ],
         ValidatorInterface::RULE_UPDATE => [
             'parceiro_id' => 'required',
             'posicao' => 'required',
-            'imagem' => 'required'
+            'imagem' => 'required',
         ],
    ];
 
     protected $messages = [
-        'required' => 'O :attribute é obrigatório'
+        'required' => 'O :attribute é obrigatório',
+        'unique' => 'já possui uma :attribute cadastrada com este tipo'
     ];
 
     protected $attributes = [

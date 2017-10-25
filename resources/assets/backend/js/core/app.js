@@ -690,12 +690,8 @@ $(function() {
         fileButtonHtml: 'Selecione o Arquivo',
         fileDefaultHtml: 'Nenhum arquivo selecionado'
     });
-
-    // Switchery toggles
-    var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
-    elems.forEach(function(html) {
-        var switchery = new Switchery(html);
-    });
+    // Bootstrap switch
+    $(".switch").bootstrapSwitch();
 
     $('table[data-form="deleteForm"]').on('click', '.form-delete', function (e) {
         e.preventDefault();
@@ -836,7 +832,6 @@ $(function() {
                 minlength: 2
             },
             imagem: {
-                required: true,
                 extension: "jpg|png|gif"
             }
         }
@@ -956,6 +951,48 @@ $(function() {
                 {data: 'action', orderable: false, searchable: false}
             ]
         });
+    }
+
+
+    /**
+     *
+     * Noticias Module
+     */
+    var tblNoticias = $('#tbl_noticias');
+    if(tblNoticias.length){
+        tblNoticias.DataTable({
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/1.10.16/i18n/Portuguese-Brasil.json'
+            },
+            serverSide: true,
+            processing: true,
+            ajax: '/dashboard/noticias/data',
+            columns: [
+                {data: 'id',width:'80px', searchable: false},
+                {data: 'titulo'},
+                {data: 'destaque', width:'70px',orderable: false},
+                {data: 'autor'},
+                {data: 'publicado',width:'80px',searchable: false},
+                {data: 'created_at',width:'100px'},
+                {data: 'action', width:'130px', orderable: false, searchable: false}
+            ]
+        });
+    }
+
+    var formNoticia = $('#form_noticia');
+    if(formNoticia.length){
+        var destaque = $('input[name=destaque]');
+        var file = $('#file_destaque');
+        var image = $('input[name=image]');
+        destaque.on('switchChange.bootstrapSwitch', function (event, state) {
+            if(state){
+                file.collapse('show');
+                image.prop("required",true);
+            }else{
+                file.collapse('hide');
+                image.prop("required",false);
+            }
+        })
     }
 
 });

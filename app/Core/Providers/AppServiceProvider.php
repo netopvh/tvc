@@ -2,6 +2,8 @@
 
 namespace App\Core\Providers;
 
+use App\Core\Repositories\BaseRepository;
+use App\Core\Repositories\BaseRepositoryContract;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(BaseRepositoryContract::class,BaseRepository::class);
+
     }
 }

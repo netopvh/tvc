@@ -51,7 +51,13 @@
                         <a href="index.html"><img src="{{ asset('frontend/images/tvc-logo.png') }}" alt="" width="150"></a>
                     </div>
                     <nav class="pull-right">
-                        <img src="http://via.placeholder.com/800x130" class="img-responsive"/>
+                        @if(counter($top_banner))
+                            @foreach($top_banner as $top)
+                                <img src="{{ asset('storage/banners/'.$top->imagem) }}" class="img-responsive"/>
+                            @endforeach
+                        @else
+                            <img src="{{ asset('frontend/images/800x130.png') }}" class="img-responsive"/>
+                        @endif
                     </nav>
                 </div>
             </nav>
@@ -92,168 +98,34 @@
         <iframe src="http://player.crosshost.com.br/playerdev/flashvideo/38?versao=2" width="580" height="320"
                 frameborder="no" scrolling="no"></iframe>
     </div>
-    <!-- END REVOLUTION SLIDER -->
-    <!-- Rev Slider End -->
 
-    <!-- content
-        ================================================== -->
-    <div id="content">
-
+    <div id="eventos">
         <div class="container">
-
             <section class="dnd_section_dd mt80">
-
                 <div class="dnd_section_content">
                     <div class="row">
                         <div class="col-md-3">
-                            <img src="http://via.placeholder.com/260x250"/>
+                            @if(counter($box_banner))
+                                @foreach($box_banner as $box)
+                                    <img src="{{ asset('storage/banners/'.$box->imagem) }}" class="img-responsive"/>
+                                @endforeach
+                            @else
+                                <img src="{{ asset('frontend/images/260x250.png') }}" class="img-responsive"/>
+                            @endif
                         </div>
-                        <div class="col-md-8">
-                            <h1 class="main-title">Eventos</h1>
-                            <div class="video">
-                                <ul class="video-slider">
-                                    <li>
-                                        <a href="">
-                                            <img src="http://www.rondoniaovivo.com/imagensEventos/15082017231750/rondoniaovivoIMG_9225.JPG"
-                                                 width="400">
-                                            <div class="caption">CORECON - Conselho regional de economia</div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <img src="http://www.rondoniaovivo.com/imagensEventos/24072017091314/rondoniaovivoAAADSC_2499.JPG"
-                                                 width="290">
-                                            <div class="caption">I workshop Bem-me-Quero</div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <img src="http://www.rondoniaovivo.com/imagensEventos/11072017163818/rondoniaovivoDSC_0003.JPG"
-                                                 width="290">
-                                            <div class="caption">Inauguração da loja física Estrela do Mar Beachwear
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <img src="http://www.rondoniaovivo.com/imagensEventos/17052017230755/AnielMusaFotograifa%20(13%20de%2062).jpg"
-                                                 width="290">
-                                            <div class="caption">Aniversário de 15 anos da Julye Silva</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        @yield('eventos-home')
+                        @yield('lat-anuncio')
                     </div>
                 </div>
             </section>
         </div>
     </div>
-    <!-- end container -->
 
-    <!-- Blog -->
-    <div class="blog">
-        <div class="container">
+    @yield('destaques-home')
 
-            <h1 class="main-title">Destaques</h1>
-            <div class="main-border"></div>
-            <br>
-            <div class="row">
-
-                <div class="col-md-4">
-                    <div class="blog-item">
-                        <a href="#"><img src="http://via.placeholder.com/270x230" alt=""></a>
-                        <div class="blog-inner" style="height: 200px;">
-                            <a href="#"><h1>GOVERNO DE RONDÔNIA ENTREGA CASAS</h1></a>
-                            <span>Agosto 06, 2017</span>
-                            <p>Governo...</p>
-
-                            <div class="blog-end">
-                                <div class="post-comments">
-                                    <a href="#"><i class="fa fa-comment"></i> 15</a>
-                                </div>
-                                <div class="post-like">
-                                    <a href="#"><i class="fa fa-heart"></i> 56</a>
-                                </div>
-                                <a href="#" class="read-more">Leia Mais</a>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="blog-item">
-                        <a href="#"><img src="http://via.placeholder.com/270x230" alt=""></a>
-                        <div class="blog-inner" style="height: 200px;">
-                            <a href="#"><h1>SINTERO ORGANIZA GREVE</h1></a>
-                            <span>Setembro 01, 2017</span>
-                            <p>O Sindicato dos trabalhadores da edução realiza greve nesta segunda feira...</p>
-
-                            <div class="blog-end">
-                                <div class="post-comments">
-                                    <a href="#"><i class="fa fa-comment"></i> 15</a>
-                                </div>
-                                <div class="post-like">
-                                    <a href="#"><i class="fa fa-heart"></i> 56</a>
-                                </div>
-                                <a href="#" class="read-more">Leia Mais</a>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="blog-item">
-                        <a href="#"><img src="http://via.placeholder.com/270x230" alt=""></a>
-                        <div class="blog-inner" style="height: 200px;">
-                            <a href="#"><h1>CONCURSO PÚBLICO DA SEPOG</h1></a>
-                            <span>Agosto 26, 2017</span>
-                            <p>SEPOG RO abriu concursos para contratação de servidores...</p>
-
-                            <div class="blog-end">
-                                <div class="post-comments">
-                                    <a href="#"><i class="fa fa-comment"></i> 15</a>
-                                </div>
-                                <div class="post-like">
-                                    <a href="#"><i class="fa fa-heart"></i> 56</a>
-                                </div>
-                                <a href="#" class="read-more">Leia Mais</a>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-
-    </div>
-    <!-- End Blog -->
-
-    <div class="news">
-        <div class="container">
-            <h1 class="main-title">Notícias</h1>
-            <div class="main-border"></div>
-            <br>
-            <div class="row">
-                <div class="col-md-8">
-                    <ul>
-                        <li>dsadsa</li>
-                        <li>sadsadsa</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    @yield('noticias-home')
 </div>
-<!-- End content -->
-
-<!-- footer
-    ================================================== -->
+<br><br>
 <footer>
     <div class="inner-footer container">
         <div class="row">

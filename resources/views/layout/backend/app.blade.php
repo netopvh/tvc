@@ -78,6 +78,7 @@
 <script type="text/javascript" src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/unisharp/laravel-ckeditor/adapters/jquery.js') }}"></script>
 <script type="text/javascript" src="{{ asset('backend/js/plugins/select2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('backend/js/plugins/switch.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('backend/js/plugins/select2.pt-BR.js') }}"></script>
 <script type="text/javascript" src="{{ asset('backend/js/plugins/datatables.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('backend/js/plugins/buttons.min.js') }}"></script>

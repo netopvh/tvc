@@ -11,7 +11,7 @@ class Banner extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $fillable = ['parceiro_id','data_limite','clicks','imagem','posicao'];
+    protected $fillable = ['parceiro_id','data_limite','clicks','imagem','posicao','publicado'];
 
     public function parceiro()
     {

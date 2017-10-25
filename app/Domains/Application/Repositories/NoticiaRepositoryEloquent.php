@@ -14,10 +14,6 @@ use App\Domains\Application\Validators\NoticiaValidator;
  */
 class NoticiaRepositoryEloquent extends BaseRepository implements NoticiaRepository
 {
-
-    protected $fieldSearchable = [
-        'title'
-    ];
     /**
      * Specify Model class name
      *

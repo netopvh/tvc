@@ -1,9 +1,8 @@
 <ul class="icons-list">
     <li>
-        @if($banner->publicado)
-            <form action="{{ route('admin.banners.unpublish',['id' => $banner->id]) }}"
+        @if($noticia->publicado)
+            <form action="{{ route('admin.banners.unpublish',['id' => $noticia->id]) }}"
                   method="POST">
-                <input type="hidden" name="posicao" value="{{ $banner->posicao }}">
                 {{ csrf_field() }}
                 {{ method_field('PATCH') }}
                 <button class="delete" title="Despublicar"
@@ -12,9 +11,8 @@
                 </button>
             </form>
         @else
-            <form action="{{ route('admin.banners.publish',['id' => $banner->id]) }}"
+            <form action="{{ route('admin.banners.publish',['id' => $noticia->id]) }}"
                   method="POST">
-                <input type="hidden" name="posicao" value="{{ $banner->posicao }}">
                 {{ csrf_field() }}
                 {{ method_field('PATCH') }}
                 <button class="delete" title="Publicar"
@@ -25,15 +23,15 @@
         @endif
     </li>
     <li>
-        <a href="{{ route('admin.banners.edit',['id' => $banner->id]) }}">
+        <a href="{{ route('admin.banners.edit',['id' => $noticia->id]) }}">
             <i class="icon-pencil7"></i>
         </a>
     </li>
     <li>
         <form class="form-delete"
-              action="{{ route('admin.banners.destroy',['id' => $banner->id]) }}"
+              action="{{ route('admin.noticias.destroy',['id' => $noticia->id]) }}"
               method="POST">
-            <input type="hidden" name="id" value="{{ $banner->id }}">
+            <input type="hidden" name="id" value="{{ $noticia->id }}">
             {{ csrf_field() }}
             {{ method_field('DELETE') }}
             <button name="delete-modal" class="delete"

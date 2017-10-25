@@ -3,20 +3,35 @@
 namespace App\Domains\Application\Controllers;
 
 use App\Domains\Application\Repositories\Contracts\BannerRepository;
+use App\Domains\Application\Repositories\Contracts\ParceiroRepository;
+use App\Exceptions\Access\GeneralException;
 use Illuminate\Http\Request;
 use App\Core\Http\Controllers\Controller;
 use Prettus\Validator\Exceptions\ValidatorException;
 use Yajra\DataTables\DataTables;
-use Carbon\Carbon;
 use Intervention\Image\ImageManager;
 
 class BannerController extends Controller
 {
 
+    /**
+     * @var BannerRepository
+     */
     private $bannerRepository;
 
+    /**
+     * @var ParceiroRepository
+     */
+    private $parceiroRepository;
+
+    /**
+     * @var $filename
+     */
     private $filename;
 
+    /**
+     * @var ImageManager
+     */
     private $imageIntervetion;
 
     /**
@@ -24,10 +39,15 @@ class BannerController extends Controller
      *
      * @return void
      */
-    public function __construct(BannerRepository $bannerRepository, ImageManager $imageIntervetion)
+    public function __construct(
+        BannerRepository $bannerRepository,
+        ParceiroRepository $parceiroRepository,
+        ImageManager $imageIntervetion
+    )
     {
         $this->middleware('auth');
         $this->bannerRepository = $bannerRepository;
+        $this->parceiroRepository = $parceiroRepository;
         $this->imageIntervetion = $imageIntervetion;
     }
 
@@ -48,11 +68,7 @@ class BannerController extends Controller
                 return $banner->parceiro->nome;
             })
             ->editColumn('limite', function ($banner) {
-                if (is_null($banner->data_limite)) {
-                    return 'Sem prazo';
-                } else {
-                    return Carbon::createFromFormat('Y-m-d', $banner->data_limite)->format('d/m/Y');
-                }
+                return is_null($banner->data_limite)?'Sem prazo':$banner->data_limite;
             })
             ->editColumn('posicao', function ($banner) {
                 switch ($banner->posicao) {
@@ -104,24 +120,84 @@ class BannerController extends Controller
         }
     }
 
-    public function show($id)
-    {
-
-    }
-
     public function edit($id)
     {
-
+        try {
+            return view('banners.edit')
+                ->with('parceiros',$this->parceiroRepository->all())
+                ->with('banner', $this->bannerRepository->find($id));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('errors','Nenhum registro localizado no banco de dados');
+        }
     }
 
     public function update($id, Request $request)
     {
+        try {
+            $this->bannerRepository->find($id);
 
+            if ($request->hasFile('imagem')) {
+                if ($this->uploadImage($request->file('imagem'),$request->posicao)){
+                    $attribute = $request->all();
+                    $attribute['imagem'] = $this->filename;
+                    $this->bannerRepository->update($attribute,$id);
+                    return redirect()->route('admin.banners')->with('success','Registro atualizado com sucesso');
+                }
+            }
+        }catch (ValidatorException $e){
+            return redirect()->back()->with('errors',$e->getMessageBag());
+        }
+        catch (\Exception $e) {
+            return redirect()->route('admin.banners')->with('errors','Nenhum registro localizado no banco de dados');
+        }
     }
 
     public function destroy($id)
     {
+        try {
+            $this->bannerRepository->find($id);
 
+            $this->bannerRepository->delete($id);
+
+            return redirect()->back()->with('success','Registro removido com sucesso');
+        } catch (ValidatorException $e){
+            return redirect()->back()->with('errors',$e->getMessageBag());
+        }
+        catch (\Exception $e) {
+            return redirect()->back()->with('errors','Nenhum registro localizado no banco de dados');
+        }
+    }
+
+    public function publish($id, Request $request)
+    {
+        try {
+            //$this->bannerRepository->find($id);
+
+            $this->bannerRepository->publish($request->all(), $id,['posicao']);
+
+            return redirect()->back()->with('success','Registro atualizado com sucesso');
+        }catch (GeneralException $e){
+            return redirect()->back()->with('errors',$e->getMessage());
+        }
+        catch (\Exception $e) {
+            return redirect()->route('admin.banners')->with('errors',$e->getMessage());
+        }
+    }
+
+    public function unpublish($id, Request $request)
+    {
+        try {
+            $this->bannerRepository->find($id);
+
+            $this->bannerRepository->unpublish($request->all(), $id);
+
+            return redirect()->back()->with('success','Registro atualizado com sucesso');
+        }catch (ValidatorException $e){
+            return redirect()->back()->with('errors',$e->getMessageBag());
+        }
+        catch (\Exception $e) {
+            return redirect()->route('admin.banners')->with('errors','Nenhum registro localizado no banco de dados');
+        }
     }
 
     /**

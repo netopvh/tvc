@@ -38,7 +38,8 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Domains/Access/helpers.php"
+            "app/Domains/Access/helpers.php",
+            "app/Core/helpers.php"
         ]
     },
     "autoload-dev": {
