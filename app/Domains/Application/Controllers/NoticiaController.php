@@ -3,6 +3,7 @@
 namespace App\Domains\Application\Controllers;
 
 use App\Domains\Application\Repositories\Contracts\NoticiaRepository;
+use App\Exceptions\Access\GeneralException;
 use Illuminate\Http\Request;
 use App\Core\Http\Controllers\Controller;
 use Prettus\Validator\Exceptions\ValidatorException;
@@ -107,12 +108,37 @@ class NoticiaController extends Controller
 
     public function edit($id)
     {
-
+        try {
+            return view('noticias.edit')
+                ->with('noticia', $this->noticiaRepository->find($id));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('errors','Nenhum registro localizado no banco de dados');
+        }
     }
 
     public function update($id, Request $request)
     {
 
+
+        try {
+            $this->noticiaRepository->find($id);
+
+            if ($request->hasFile('imagem')) {
+                if ($this->uploadImage($request->file('imagem'))){
+                    $attribute = $request->all();
+                    $attribute['imagem'] = $this->filename;
+                    $this->noticiaRepository->update($attribute,$id);
+                }
+            }else{
+                $this->noticiaRepository->update($request->all(),$id);
+            }
+            return redirect()->route('admin.noticias')->with('success','Registro atualizado com sucesso');
+        }catch (ValidatorException $e){
+            return redirect()->back()->with('errors',$e->getMessageBag());
+        }
+        catch (\Exception $e) {
+            return redirect()->route('admin.banners')->with('errors','Nenhum registro localizado no banco de dados');
+        }
     }
 
     public function destroy($id)
@@ -128,6 +154,38 @@ class NoticiaController extends Controller
         }
         catch (\Exception $e) {
             return redirect()->back()->with('errors','Nenhum registro localizado no banco de dados');
+        }
+    }
+
+    public function publish($id, Request $request)
+    {
+        try {
+            //$this->bannerRepository->find($id);
+
+            $this->noticiaRepository->publish($request->all(), $id);
+
+            return redirect()->back()->with('success','Registro atualizado com sucesso');
+        }catch (GeneralException $e){
+            return redirect()->back()->with('errors',$e->getMessage());
+        }
+        catch (\Exception $e) {
+            return redirect()->back()->with('errors',$e->getMessage());
+        }
+    }
+
+    public function unpublish($id, Request $request)
+    {
+        try {
+            $this->noticiaRepository->find($id);
+
+            $this->noticiaRepository->unpublish($request->all(), $id);
+
+            return redirect()->back()->with('success','Registro atualizado com sucesso');
+        }catch (ValidatorException $e){
+            return redirect()->back()->with('errors',$e->getMessageBag());
+        }
+        catch (\Exception $e) {
+            return redirect()->back(w)->with('errors','Nenhum registro localizado no banco de dados');
         }
     }
 

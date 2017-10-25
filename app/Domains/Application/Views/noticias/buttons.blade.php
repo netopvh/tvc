@@ -1,7 +1,7 @@
 <ul class="icons-list">
     <li>
         @if($noticia->publicado)
-            <form action="{{ route('admin.banners.unpublish',['id' => $noticia->id]) }}"
+            <form action="{{ route('admin.noticias.unpublish',['id' => $noticia->id]) }}"
                   method="POST">
                 {{ csrf_field() }}
                 {{ method_field('PATCH') }}
@@ -11,7 +11,7 @@
                 </button>
             </form>
         @else
-            <form action="{{ route('admin.banners.publish',['id' => $noticia->id]) }}"
+            <form action="{{ route('admin.noticias.publish',['id' => $noticia->id]) }}"
                   method="POST">
                 {{ csrf_field() }}
                 {{ method_field('PATCH') }}
@@ -23,7 +23,7 @@
         @endif
     </li>
     <li>
-        <a href="{{ route('admin.banners.edit',['id' => $noticia->id]) }}">
+        <a href="{{ route('admin.noticias.edit',['id' => $noticia->id]) }}">
             <i class="icon-pencil7"></i>
         </a>
     </li>

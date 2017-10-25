@@ -943,7 +943,7 @@ $(function () {
             serverSide: true,
             processing: true,
             ajax: '/dashboard/noticias/data',
-            columns: [{ data: 'id', width: '80px', searchable: false }, { data: 'titulo' }, { data: 'destaque', width: '70px', orderable: false }, { data: 'autor' }, { data: 'publicado', width: '80px', searchable: false }, { data: 'created_at', width: '100px' }, { data: 'action', width: '130px', orderable: false, searchable: false }]
+            columns: [{ data: 'id', width: '80px', searchable: false }, { data: 'titulo' }, { data: 'destaque', width: '70px', orderable: false }, { data: 'autor' }, { data: 'publicado', width: '80px', searchable: false }, { data: 'created_at', width: '100px' }, { data: 'action', width: '135px', orderable: false, searchable: false }]
         });
     }
 

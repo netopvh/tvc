@@ -974,7 +974,7 @@ $(function() {
                 {data: 'autor'},
                 {data: 'publicado',width:'80px',searchable: false},
                 {data: 'created_at',width:'100px'},
-                {data: 'action', width:'130px', orderable: false, searchable: false}
+                {data: 'action', width:'135px', orderable: false, searchable: false}
             ]
         });
     }

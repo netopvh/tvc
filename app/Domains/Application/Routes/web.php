@@ -6,6 +6,10 @@ $this->group(['prefix' => 'dashboard','middleware' => ['permission:ver-administr
         $this->get('/data','NoticiaController@data');
         $this->get('/create','NoticiaController@create')->name('admin.noticias.add');
         $this->post('/create','NoticiaController@store')->name('admin.noticias.store');
+        $this->get('/{id}/edit','NoticiaController@edit')->name('admin.noticias.edit');
+        $this->patch('/{id}/update','NoticiaController@update')->name('admin.noticias.update');
+        $this->patch('/{id}/publish','NoticiaController@publish')->name('admin.noticias.publish');
+        $this->patch('/{id}/unpublish','NoticiaController@unpublish')->name('admin.noticias.unpublish');
         $this->delete('/{id}','NoticiaController@destroy')->name('admin.noticias.destroy');
     });
 
