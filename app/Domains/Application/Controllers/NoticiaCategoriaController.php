@@ -3,36 +3,15 @@
 namespace App\Domains\Application\Controllers;
 
 use App\Domains\Application\Repositories\Contracts\NoticiaCategoriaRepository;
-use App\Domains\Application\Repositories\Contracts\NoticiaRepository;
 use App\Exceptions\Access\GeneralException;
 use Illuminate\Http\Request;
 use App\Core\Http\Controllers\Controller;
 use Prettus\Validator\Exceptions\ValidatorException;
-use Yajra\DataTables\DataTables;
-use Intervention\Image\ImageManager;
 
-class NoticiaController extends Controller
+class NoticiaCategoriaController extends Controller
 {
 
-    /**
-     * @var NoticiaRepository
-     */
-    private $noticiaRepository;
-
-    /**
-     * @var NoticiaCategoriaRepository
-     */
     private $noticiaCategoriaRepository;
-
-    /**
-     * @var $filename
-     */
-    private $filename;
-
-    /**
-     * @var ImageManager
-     */
-    private $imageIntervetion;
 
     /**
      * Create a new controller instance.
@@ -40,71 +19,35 @@ class NoticiaController extends Controller
      * @return void
      */
     public function __construct(
-        NoticiaCategoriaRepository $noticiaCategoriaRepository,
-        NoticiaRepository $noticiaRepository,
-        ImageManager $imageIntervetion
+        NoticiaCategoriaRepository $noticiaCategoriaRepository
     )
     {
         $this->middleware('auth');
-        $this->noticiaRepository = $noticiaRepository;
         $this->noticiaCategoriaRepository = $noticiaCategoriaRepository;
-        $this->imageIntervetion = $imageIntervetion;
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        return view('noticias.index');
+        return view('noticia_categoria.index')
+            ->with('categorias',$this->noticiaCategoriaRepository->paginate(10));
     }
 
-    public function data(DataTables $dataTables)
-    {
-        return $dataTables->eloquent($this->noticiaRepository->query())
-            ->editColumn('titulo',function($noticia){
-                return str_limit($noticia->titulo,35);
-            })
-            ->editColumn('destaque', function($noticia){
-                return $noticia->destaque?'<span class="label label-success">Sim</span>':'<span class="label label-danger">Não</span>';
-            })
-            ->editColumn('publicado',function($noticia){
-                return $noticia->publicado? '<span class="label label-success">Publicado</span>':'<span class="label label-danger">Não Publicado</span>';
-            })
-            ->editColumn('autor',function($noticia){
-                return is_null($noticia->autor)?'Não atribuído':$noticia->autor;
-            })
-            ->editColumn('created_at', function ($noticia) {
-                return $noticia->created_at->format('d/m/Y');
-            })
-            ->addColumn('action', function ($noticia){
-                return view('noticias.buttons')->with('noticia',$noticia);
-            })
-            ->rawColumns(['action','destaque','publicado'])
-            ->make(true);
-    }
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
-        return view('noticias.create')
-            ->with('categorias', $this->noticiaCategoriaRepository->all());
+        return view('noticia_categoria.create');
     }
 
     public function store(Request $request)
     {
         try {
-            if ($request->hasFile('imagem')) {
-                if ($this->uploadImage($request->file('imagem'))){
-                    $attribute = $request->all();
-                    $attribute['img_destaque'] = $this->filename;
-                    $this->noticiaRepository->create($attribute);
-                }
-            }else{
-                $this->noticiaRepository->create($request->all());
-            }
-            return redirect()->route('admin.noticias')->with('success', 'Registro inserido com sucesso!');
+            $this->noticiaCategoriaRepository->create($request->all());
+            return redirect()->route('admin.categorias_noticias')->with('success', 'Registro inserido com sucesso!');
         } catch (ValidatorException $e) {
             return redirect()->back()->with('errors', $e->getMessageBag());
         }

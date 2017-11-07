@@ -1,5 +1,9 @@
 @extends('layout.frontend.app')
 
+@section('player')
+    @include('layout.frontend.partials.player')
+@stop
+
 @section('eventos-home')
     @include('eventos.home')
 @stop

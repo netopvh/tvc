@@ -979,20 +979,4 @@ $(function() {
         });
     }
 
-    var formNoticia = $('#form_noticia');
-    if(formNoticia.length){
-        var destaque = $('input[name=destaque]');
-        var file = $('#file_destaque');
-        var image = $('input[name=image]');
-        destaque.on('switchChange.bootstrapSwitch', function (event, state) {
-            if(state){
-                file.collapse('show');
-                image.prop("required",true);
-            }else{
-                file.collapse('hide');
-                image.prop("required",false);
-            }
-        })
-    }
-
 });

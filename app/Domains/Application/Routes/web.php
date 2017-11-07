@@ -1,6 +1,16 @@
 <?php
 
 $this->group(['prefix' => 'dashboard','middleware' => ['permission:ver-administracao']],function (){
+
+    $this->group(['prefix' => 'categorias'], function (){
+        $this->get('/','NoticiaCategoriaController@index')->name('admin.categorias_noticias');
+        $this->get('/create','NoticiaCategoriaController@create')->name('admin.categorias_noticias.create');
+        $this->post('/create','NoticiaCategoriaController@store')->name('admin.categorias_noticias.store');
+        $this->get('/{id}/edit','NoticiaCategoriaController@edit')->name('admin.categorias_noticias.edit');
+        $this->patch('/{id}/update','NoticiaCategoriaController@update')->name('admin.noticias.update');
+        $this->delete('/{id}','NoticiaCategoriaController@destroy')->name('admin.noticias.destroy');
+    });
+
     $this->group(['prefix' => 'noticias'], function (){
         $this->get('/','NoticiaController@index')->name('admin.noticias');
         $this->get('/data','NoticiaController@data');

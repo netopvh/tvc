@@ -11,18 +11,29 @@
                                                                                 title="Gerenciamento"></i></li>
                     <li class="{{ active('dashboard') }}"><a href="{{ route('admin.home') }}"><i class="icon-home4"></i>
                             <span>Início</span></a></li>
-                    <li class="{{ active(['admin.noticias','admin.noticias.*']) }}"><a
-                                href="{{ route('admin.noticias') }}"><i class="icon-newspaper"></i> Notícias</a></li>
+                    <li>
+                        <a href="#"><i class="icon-newspaper"></i> Notícias</a>
+                        <ul>
+                            <li class="{{ active(['admin.categorias_noticias','admin.categorias_noticias.*']) }}">
+                                <a href="{{ route('admin.categorias_noticias') }}" id="layout1"><i class="icon-newspaper2"></i> Categoria de Notícias</a>
+                            </li>
+                            <li class="{{ active(['admin.noticias','admin.noticias.*']) }}">
+                                <a href="{{ route('admin.noticias') }}" id="layout1"><i class="icon-newspaper"></i> Notícias</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="{{ active(['']) }}"><a
                                 href="{{ route('admin.noticias') }}"><i class="icon-camera"></i> Eventos</a></li>
                     <li class="{{ active(['']) }}"><a
                                 href="{{ route('admin.noticias') }}"><i class="icon-books"></i> Programação</a></li>
                     <li class="{{ active(['admin.parceiros','admin.parceiros.*']) }}"><a
-                                href="{{ route('admin.parceiros') }}"><i class="icon-address-book"></i> Parceiros</a></li>
+                                href="{{ route('admin.parceiros') }}"><i class="icon-address-book"></i> Parceiros</a>
+                    </li>
                     <li class="{{ active(['']) }}"><a
                                 href="{{ route('admin.noticias') }}"><i class="icon-youtube"></i> Vídeos</a></li>
                     <li class="{{ active(['']) }}"><a
-                                href="{{ route('admin.banners') }}"><i class="icon-enlarge"></i> Banners e Anuncios</a></li>
+                                href="{{ route('admin.banners') }}"><i class="icon-enlarge"></i> Banners e Anuncios</a>
+                    </li>
                     <!-- /gerenciamento -->
 
                 @permission('ver-administracao')

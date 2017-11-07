@@ -3,8 +3,10 @@ namespace App\Domains\Application\Providers;
 
 use App\Domains\Application\Repositories\BannerRepositoryEloquent;
 use App\Domains\Application\Repositories\Contracts\BannerRepository;
+use App\Domains\Application\Repositories\Contracts\NoticiaCategoriaRepository;
 use App\Domains\Application\Repositories\Contracts\NoticiaRepository;
 use App\Domains\Application\Repositories\Contracts\ParceiroRepository;
+use App\Domains\Application\Repositories\NoticiaCategoriaRepositoryEloquent;
 use App\Domains\Application\Repositories\NoticiaRepositoryEloquent;
 use App\Domains\Application\Repositories\ParceiroRepositoryEloquent;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +44,7 @@ class ApplicationServiceProvider extends ServiceProvider
         $this->app->bind(NoticiaRepository::class,NoticiaRepositoryEloquent::class);
         $this->app->bind(ParceiroRepository::class,ParceiroRepositoryEloquent::class);
         $this->app->bind(BannerRepository::class,BannerRepositoryEloquent::class);
+        $this->app->bind(NoticiaCategoriaRepository::class,NoticiaCategoriaRepositoryEloquent::class);
     }
 
     /**

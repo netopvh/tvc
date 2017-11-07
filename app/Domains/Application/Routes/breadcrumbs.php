@@ -1,5 +1,27 @@
 <?php
 
+
+/**
+ * Notícias Categorias
+ */
+Breadcrumbs::register('admin.categoria_noticias', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin.home');
+    $breadcrumbs->push('Categoria de Notícias', route('admin.noticias'));
+});
+Breadcrumbs::register('admin.categoria_noticias.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin.categoria_noticias');
+    $breadcrumbs->push('Novo', route('admin.noticias.add'));
+});
+Breadcrumbs::register('admin.categoria_noticias.show', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin.categoria_noticias');
+    $breadcrumbs->push('Exibir', '');
+});
+Breadcrumbs::register('admin.categoria_noticias.edit', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin.categoria_noticias');
+    $breadcrumbs->push('Editar', '');
+});
+
+
 /**
  * Notícias
  */

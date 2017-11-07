@@ -1,5 +1,6 @@
 <div class="col-md-8">
     <h1 class="main-title">Eventos</h1>
+    <div class="main-border"></div>
     <div class="video">
         <ul class="video-slider">
             <li>

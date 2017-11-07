@@ -2,7 +2,6 @@
 
 namespace App\Domains\Frontend\Controllers;
 
-use App\Domains\Application\Repositories\Contracts\BannerRepository;
 use App\Domains\Application\Repositories\Contracts\NoticiaRepository;
 use Illuminate\Http\Request;
 use App\Core\Http\Controllers\Controller;
@@ -15,18 +14,12 @@ class HomeController extends Controller
      */
     public $noticiaRepository;
 
-    /**
-     * @var BannerRepository
-     */
-    public $bannerRepository;
 
     public function __construct(
-        NoticiaRepository $noticiaRepository,
-        BannerRepository $bannerRepository
+        NoticiaRepository $noticiaRepository
     )
     {
         $this->noticiaRepository = $noticiaRepository;
-        $this->bannerRepository = $bannerRepository;
     }
 
     /**
@@ -36,11 +29,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //dd($this->bannerRepository->findWhere(['posicao' => 'T', 'publicado' => 1]));
+        \Carbon\Carbon::setLocale('pt_BR');
         return view('index')
-            ->with('top_banner',$this->bannerRepository->findWhere(['posicao' => 'T', 'publicado' => 1]))
-            ->with('box_banner',$this->bannerRepository->findWhere(['posicao' => 'B', 'publicado' => 1]))
-            ->with('noticias', $this->noticiaRepository->all())
+            ->with('noticias', $this->noticiaRepository->with('categoria')->orderBy('created_at','desc')->all())
             ->with('destaques', $this->noticiaRepository->scopeQuery(function ($query) {
                 return $query->take(3);
             })->orderBy('created_at', 'desc')->findWhere(['destaque' => true, 'publicado' => true]));

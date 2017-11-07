@@ -18,6 +18,9 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer(
             'banners.create', 'App\Domains\Application\ViewComposers\ParceiroComposer'
         );
+        View::composer(
+            'layout.frontend.app', 'App\Domains\Frontend\ViewComposers\BannerComposer'
+        );
 
         // Using Closure based composers...
         View::composer('dashboard', function ($view) {

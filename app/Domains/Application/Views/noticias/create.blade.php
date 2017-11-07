@@ -43,6 +43,19 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Categoria:</label>
+                                        <select name="categoria_id" class="form-control" required>
+                                            <option value=""></option>
+                                            @foreach($categorias as $categoria)
+                                                <option value="{{ $categoria->id }}">{{ $categoria->descricao }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="display-block">Notícia em Destaque:</label>
@@ -52,10 +65,10 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div id="file_destaque" class="col-md-6 collapse">
+                                <div id="file_destaque" class="col-md-6">
                                     <div class="form-group">
                                         <label class="display-block">Imagem Destaque:</label>
-                                        <input name="imagem" type="file" class="file-styled">
+                                        <input name="imagem" type="file" class="file-styled" required>
                                     </div>
                                 </div>
                             </div>

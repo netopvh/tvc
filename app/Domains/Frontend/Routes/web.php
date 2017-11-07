@@ -1,7 +1,14 @@
 <?php
 
-Route::get('/','HomeController@index')->name('home');
 
 // Registration Routes...
-Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'RegisterController@register');
+$this->get('register', 'RegisterController@showRegistrationForm')->name('register');
+$this->post('register', 'RegisterController@register');
+
+//Home Route
+$this->get('/','HomeController@index')->name('home');
+
+/**
+ * Noticias
+ */
+$this->get('/noticias','NoticiaController@index')->name('noticias.index');

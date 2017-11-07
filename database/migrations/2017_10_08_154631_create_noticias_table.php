@@ -15,7 +15,10 @@ class CreateNoticiasTable extends Migration
 	{
 		Schema::create('noticias', function(Blueprint $table) {
             $table->increments('id');
+            $table->string('slug');
             $table->string('titulo');
+            $table->integer('categoria_id')->unsigned();
+            $table->foreign('categoria_id')->references('id')->on('noticia_categorias');
             $table->boolean('destaque')->default(false);
             $table->longText('conteudo');
             $table->string('img_destaque')->nullable();

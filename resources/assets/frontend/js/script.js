@@ -277,12 +277,6 @@ $(document).ready(function($) {
 
 	}
 
-	try	{
-		$(".alert").alert()
-	} catch(err) {
-		
-	}
-
 
  	/*-------------------------------------------------*/
 	/* =  Scroll to TOP
@@ -291,32 +285,6 @@ $(document).ready(function($) {
         $('html, body').animate({scrollTop: 0}, 'slow');
         return false;
     });
-
-
-	/*-------------------------------------------------*/
-	/* =  Easy PieChart
-	/*-------------------------------------------------*/
-	try {
-
-		var PieChart = $('.skill-item');
-		PieChart.appear(function() {
-
-			$(function() {
-				$('.chart').easyPieChart({
-					easing: 'easeOutBounce',
-					onStep: function(from, to, percent) {
-						$(this.el).find('.percent').text(Math.round(percent));
-					}
-				});
-				var chart = window.chart = $('.chart').data('easyPieChart');
-				$('.js_update').on('click', function() {
-					chart.update(Math.random()*200-100);
-				});
-			});
-		});
-		} catch(err) {
-
-	}
 
     
 
@@ -359,36 +327,6 @@ $(document).ready(function($) {
 	} catch(err) {
 
 	}
-	
-	/* ---------------------------------------------------------------------- */
-	/*	Contact Form
-	/* ---------------------------------------------------------------------- */
-
-	var submitContact = $('#submit_contact'),
-		message = $('#msg');
-
-	submitContact.on('click', function(e){
-		e.preventDefault();
-
-		var $this = $(this);
-		
-		$.ajax({
-			type: "POST",
-			url: 'contact.php',
-			dataType: 'json',
-			cache: false,
-			data: $('#contact-form').serialize(),
-			success: function(data) {
-
-				if(data.info !== 'error'){
-					$this.parents('form').find('input[type=text],textarea,select').filter(':visible').val('');
-					message.hide().removeClass('success').removeClass('error').addClass('success').html(data.msg).fadeIn('slow').delay(5000).fadeOut('slow');
-				} else {
-					message.hide().removeClass('success').removeClass('error').addClass('error').html(data.msg).fadeIn('slow').delay(5000).fadeOut('slow');
-				}
-			}
-		});
-	});
 
     $(".video-slider").lightSlider({
         pager: false,
