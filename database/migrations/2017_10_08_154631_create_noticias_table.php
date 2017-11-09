@@ -20,6 +20,7 @@ class CreateNoticiasTable extends Migration
             $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('noticia_categorias');
             $table->boolean('destaque')->default(false);
+            $table->text('short_content');
             $table->longText('conteudo');
             $table->string('img_destaque')->nullable();
             $table->string('autor')->nullable();

@@ -19,7 +19,7 @@ class ComposerServiceProvider extends ServiceProvider
             'banners.create', 'App\Domains\Application\ViewComposers\ParceiroComposer'
         );
         View::composer(
-            'layout.frontend.app', 'App\Domains\Frontend\ViewComposers\BannerComposer'
+            ['layout.frontend.app','layout.frontend.app_lat',], 'App\Domains\Frontend\ViewComposers\BannerComposer'
         );
 
         // Using Closure based composers...

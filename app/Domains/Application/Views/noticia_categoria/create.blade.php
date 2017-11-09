@@ -36,7 +36,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Descricao:</label>
-                                        <input type="text" class="form-control text-uppercase" name="descricao" required>
+                                        <input type="text" class="form-control text-uppercase" name="descricao" required autofocus>
                                     </div>
                                 </div>
                             </div>

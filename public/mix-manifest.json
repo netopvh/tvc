@@ -1,7 +1,7 @@
 {
-    "/backend/js/theme.js": "/backend/js/theme.js?id=a583ead6896a07376835",
-    "/backend/js/bundle.js": "/backend/js/bundle.js?id=0be639c14907204151de",
-    "/frontend/js/app.js": "/frontend/js/app.js?id=33a4920fcfbd42191731",
+    "/backend/js/theme.js": "/backend/js/theme.js?id=a9facd1de7dd38ad768b",
+    "/backend/js/bundle.js": "/backend/js/bundle.js?id=47baaeef5f4a4570d0dc",
+    "/frontend/js/app.js": "/frontend/js/app.js?id=4ad0071e4593c07e0c1d",
     "/backend/js/plugins/select2.min.js": "/backend/js/plugins/select2.min.js?id=d9b86c1654d3ec74a4b2",
     "/backend/js/plugins/select2.pt-BR.js": "/backend/js/plugins/select2.pt-BR.js?id=3496356d67194bc75767",
     "/backend/js/plugins/jquery.validate.min.js": "/backend/js/plugins/jquery.validate.min.js?id=4828a9436d1607a6e35c",
@@ -11,5 +11,5 @@
     "/backend/js/plugins/datatables.min.js": "/backend/js/plugins/datatables.min.js?id=ac2b45e80d3de246a6f8",
     "/backend/js/plugins/buttons.min.js": "/backend/js/plugins/buttons.min.js?id=74402429e91738db3cf6",
     "/backend/js/plugins/switch.min.js": "/backend/js/plugins/switch.min.js?id=abbd2a228eb25dd182b8",
-    "/frontend/css/all.css": "/frontend/css/all.css?id=b39a18a41f977c929790"
+    "/frontend/css/all.css": "/frontend/css/all.css?id=858cc3441847e7c7e09c"
 }

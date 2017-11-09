@@ -13,7 +13,7 @@ class Noticia extends Model implements Transformable
     use Sluggable,TransformableTrait;
 
     protected $fillable = [
-        'titulo','destaque','conteudo','img_destaque','autor','fonte','publicado','categoria_id'
+        'titulo','destaque','short_content','conteudo','img_destaque','autor','fonte','publicado','categoria_id'
     ];
 
     /**

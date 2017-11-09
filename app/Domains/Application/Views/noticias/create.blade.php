@@ -89,7 +89,15 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Notícia:</label>
+                                        <label>Descrição Curta:</label>
+                                        <textarea name="short_content" class="textarea" rows="5" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Conteúdo da Notícia:</label>
                                         <textarea name="conteudo" class="textarea" rows="5" required></textarea>
                                     </div>
                                 </div>

@@ -12,14 +12,11 @@
                             <div class="blog-inner" style="height: 250px;">
                                 <a href="#"><h1>{{ $destaque->titulo }}</h1></a>
                                 <span>{{ $destaque->created_at->format('d/m/Y H:i:s') }}</span>
-                                <p class="text-justify">{!! str_limit($destaque->conteudo,180) !!}</p>
+                                <p class="text-justify">{!! str_limit($destaque->short_content,180) !!}</p>
 
                                 <div class="blog-end">
                                     <div class="post-comments">
                                         <a href="#"><i class="fa fa-comment"></i> 15</a>
-                                    </div>
-                                    <div class="post-like">
-                                        <a href="#"><i class="fa fa-heart"></i> 56</a>
                                     </div>
                                     <a href="#" class="read-more">Leia Mais</a>
                                     <div class="clear"></div>

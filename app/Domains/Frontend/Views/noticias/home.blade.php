@@ -22,8 +22,8 @@
                                 </div>
                             </div>
                             <div class="unit-body">
-                                <div class="h4 text-bold"><a href="post-default.html" class="post-link">{{ $noticia->titulo }}</a></div>
-                                <p>{!! str_limit($noticia->conteudo,200) !!}</p>
+                                <div class="h4 text-bold"><a href="{{ route('noticias.show',['slug'=>$noticia->slug]) }}" class="post-link">{{ $noticia->titulo }}</a></div>
+                                <p>{!! str_limit($noticia->short_content,200) !!}</p>
                                 <div class="post-meta post-meta-hidden-outer">
                                     <div class="element-groups-custom">
                                         <a href="politics.html" class="post-meta-time">
@@ -35,8 +35,8 @@
                             </div>
                         </div>
                     </div>
+                    <div class="divider divider-dashed"></div>
                 @endforeach
-                <div class="divider divider-dashed"></div>
             </div>
         </div>
     </div>

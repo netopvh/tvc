@@ -22,6 +22,15 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#"><i class="icon-book2"></i> Páginas</a>
+                        <ul>
+                            <li class="">
+                                <a href="" id="layout1"><i class="icon-newspaper2"></i> Quem Somos</a>
+                            </li>
+
+                        </ul>
+                    </li>
                     <li class="{{ active(['']) }}"><a
                                 href="{{ route('admin.noticias') }}"><i class="icon-camera"></i> Eventos</a></li>
                     <li class="{{ active(['']) }}"><a

@@ -36,4 +36,9 @@ class HomeController extends Controller
                 return $query->take(3);
             })->orderBy('created_at', 'desc')->findWhere(['destaque' => true, 'publicado' => true]));
     }
+
+    public function getQuemSomos()
+    {
+        return view('paginas.quem_somos');
+    }
 }

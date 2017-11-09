@@ -4825,3 +4825,9 @@ html .element-groups-custom > *, html .element-groups-custom > *:first-child {
     white-space: normal;
   }
 }
+.text-uppercase{
+  text-transform: uppercase;
+}
+.text-black{
+  color: #000000;
+}

@@ -26,4 +26,12 @@ class NoticiaController extends Controller
     {
         return view('noticias.list_news');
     }
+
+    public function show($slug)
+    {
+        return view('noticias.show')
+            ->with('noticia',$this->noticiaRepository->findWhere([
+                'slug' => $slug
+            ])->first());
+    }
 }
